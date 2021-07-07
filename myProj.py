@@ -187,9 +187,9 @@ def drawWindow(win, Button):
 
 def Astar(draw, grid, start, end):
 	count = 0
-	open_set = PriorityQueue()
+	cur_dat = PriorityQueue()
 	# zero here is the f-score
-	open_set.put((0, count, start))
+	cur_dat.put((0, count, start))
 	came_from = {}
 	#python hacks to initialise
 	g_score = {spot: float("inf") for row in grid for spot in row}
@@ -198,18 +198,18 @@ def Astar(draw, grid, start, end):
 	f_score[start] = h(start.get_pos(), end.get_pos())
 
 	#this keeps track of things in/out of priority_queue
-	open_set_hash = {start}
+	seen = {start}
 
-	while not open_set.empty():
+	while not cur_dat.empty():
 		#as this algo would be running ,if we want someone
 		#to exit it we need to keep the following check
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				pygame.quit()
 
-		current = open_set.get()[2] #the node
-		open_set
-		open_set_hash.remove(current)
+		current = cur_dat.get()[2] #the node
+		cur_dat
+		seen.remove(current)
 
 		if current == end:
 			reconstruct_path(came_from, end, draw)
@@ -224,10 +224,10 @@ def Astar(draw, grid, start, end):
 				g_score[neighbor] = temp_g_score
 				f_score[neighbor] = temp_g_score + h(neighbor.get_pos(), end.get_pos())
 
-				if neighbor not in open_set_hash:
+				if neighbor not in seen:
 					count += 1
-					open_set.put((f_score[neighbor], count, neighbor))
-					open_set_hash.add(neighbor)
+					cur_dat.put((f_score[neighbor], count, neighbor))
+					seen.add(neighbor)
 					neighbor.make_open() #inserted
 		draw()
 
@@ -237,21 +237,21 @@ def Astar(draw, grid, start, end):
 	return False
 
 def BFS(draw, grid, start, end):
-	open_set = Queue()
-	open_set.put(start)
+	cur_dat = Queue()
+	cur_dat.put(start)
 	came_from = {}
 	#python hacks to initialise
 	dist = {spot: float("inf") for row in grid for spot in row}
 	dist[start] = 0;
 
-	while not open_set.empty():
+	while not cur_dat.empty():
 		#as this algo would be running ,if we want someone
 		#to exit it we need to keep the following check
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				pygame.quit()
 
-		current = open_set.get() #the node
+		current = cur_dat.get() #the node
 
 		if current == end:
 			reconstruct_path(came_from, end, draw)
@@ -264,7 +264,7 @@ def BFS(draw, grid, start, end):
 			if temp_dist < dist[neighbor]:
 				came_from[neighbor] = current
 				dist[neighbor] = temp_dist
-				open_set.put(neighbor)
+				cur_dat.put(neighbor)
 				neighbor.make_open()
 		draw()
 
@@ -276,21 +276,21 @@ def BFS(draw, grid, start, end):
 
 
 def DFS(draw, grid, start, end):
-	open_set = LifoQueue()
-	open_set.put(start)
+	cur_dat = LifoQueue()
+	cur_dat.put(start)
 	came_from = {}
 	#python hacks to initialise
 	vis = {spot: 0 for row in grid for spot in row}
 	vis[start] = 1;
 
-	while not open_set.empty():
+	while not cur_dat.empty():
 		#as this algo would be running ,if we want someone
 		#to exit it we need to keep the following check
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				pygame.quit()
 
-		current = open_set.get() #the node
+		current = cur_dat.get() #the node
 
 		for neighbor in current.neighbors:
 			if not vis[neighbor]:
@@ -300,7 +300,7 @@ def DFS(draw, grid, start, end):
 					reconstruct_path(came_from, end, draw)
 					end.make_end()
 					return True
-				open_set.put(neighbor)
+				cur_dat.put(neighbor)
 				neighbor.make_open()
 		draw()
 
@@ -450,7 +450,7 @@ class Block:
 
 
 
-
+#generates a random array
 def make_arr(width, arrSize, maxHeight):
 	arr = []
 	gap = width // (1.5*arrSize)
@@ -507,6 +507,7 @@ def insertionSort(win, drawArr, arr, arrSize):
 			arr[j].make_norm()
 			arr[j-1].make_norm()
 
+# mergesort visual utility
 def setArr(arr, tarr, l, mid, r, i, j, arrSize):
 	darr = []
 	for x in range (0,l):
@@ -647,7 +648,10 @@ def sortAlgos(win, width):
 			pos = pygame.mouse.get_pos()
 			if event.type == pygame.QUIT:
 				run = False
-				pygame.quit()
+				return
+			if event.type == pygame.KEYDOWN:
+				if event.key == pygame.K_x:
+					return
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				if BubbleSort.isOver(pos):
 					doSort(win, arr, arrSize, 'BubbleSort')
