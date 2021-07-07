@@ -14,6 +14,8 @@ In this section you may select any of the following searching/pathfinding algori
 After you select one of the algorithms, you would be presented with a grid of size 50x50 where you can select the starting and ending points of the search. After this you can also 
 add barriers in the grid , all these are to be done by selecting the appropriate cells by clicking the left mouse button. Press SPACE bar to start the search. After the search is
 complete you can clear the screen by pressing 'c' or return to the algorithms list by pressing 'x' in the keyboard.
+![mergeSearch](https://user-images.githubusercontent.com/72709159/124761377-5bc54f00-df4f-11eb-98c4-fc6397b0da05.jpg)
+
 
 # Sorting Section
 In this section you would be presented with the following algorithms and a shuffle button where you can shuffle the bars in a random order.
