@@ -12,7 +12,7 @@ In this section you may select any of the following searching/pathfinding algori
 ![searchPage](https://user-images.githubusercontent.com/72709159/124760656-97134e00-df4e-11eb-92b7-a96032c7099f.PNG)
 
 After you select one of the algorithms, you would be presented with a grid of size 50x50 where you can select the starting and ending points of the search. After this you can also 
-add barriers in the grid , all these are to be done by selecting the appropriate cells by clicking the left mouse button. Press SPACE bar to start the search. After the search is
+add barriers in the grid , all these are to be done by selecting the appropriate cells by clicking the left mouse button. You may remove these barriers by selecting it and clicking on the right mouse button. Press SPACE bar to start the search. After the search is
 complete you can clear the screen by pressing 'c' or return to the algorithms list by pressing 'x' in the keyboard.
 
 ![mergeSearch](https://user-images.githubusercontent.com/72709159/124761377-5bc54f00-df4f-11eb-98c4-fc6397b0da05.jpg)
