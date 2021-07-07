@@ -21,7 +21,7 @@ complete you can clear the screen by pressing 'c' or return to the algorithms li
 # Sorting Section
 In this section you would be presented with the following algorithms and a shuffle button where you can shuffle the bars in a random order.
 
-
+![SortMerge](https://user-images.githubusercontent.com/72709159/124762655-c4f99200-df50-11eb-8c7f-f82f7cf40728.jpg)
 
 After you select one of the algorithms, the process would start and you can visualize how that particular algorithm is sorting those bars. After the sorting is done you can 
 press 'x' to return to the algorithms list. 
