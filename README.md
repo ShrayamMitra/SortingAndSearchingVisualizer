@@ -4,9 +4,12 @@
 This project is a visual tool to visualize several sorting and path finding algorithms.
 # Starting view
 After running the program a 800x800 window will open, asking the user to choose the type of algorithms they want to visualize. User has to click the desired button.
+
 ![Home](https://user-images.githubusercontent.com/72709159/124760456-64695580-df4e-11eb-9093-8c98bafba8e5.PNG)
 # Searching Section 
 In this section you may select any of the following searching/pathfinding algorithms in order to view it.
+
+![searchPage](https://user-images.githubusercontent.com/72709159/124760656-97134e00-df4e-11eb-92b7-a96032c7099f.PNG)
 
 After you select one of the algorithms, you would be presented with a grid of size 50x50 where you can select the starting and ending points of the search. After this you can also 
 add barriers in the grid , all these are to be done by selecting the appropriate cells by clicking the left mouse button. Press SPACE bar to start the search. After the search is
